@@ -102,9 +102,6 @@ class TranslationWizard(QDialog):
         self.model_status.setStyleSheet("font-size: 11px;")
         layout.addWidget(self.model_status)
 
-        # Populate models
-        self._populate_models()
-
         layout.addSpacing(10)
 
         # Pass mode: single-pass (fast) or dual-pass (translate with one model,
@@ -137,6 +134,9 @@ class TranslationWizard(QDialog):
         dual_form.addStretch()
         self.dual_widget.setVisible(False)
         mode_layout.addWidget(self.dual_widget)
+
+        # Populate models
+        self._populate_models()
 
         self.rb_single.toggled.connect(
             lambda checked: self.dual_widget.setVisible(not checked))
